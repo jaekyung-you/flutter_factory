@@ -30,7 +30,7 @@ class BaseRoundButton extends StatelessWidget {
         onPress();
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppConfig.innerPadding * 2, vertical: AppConfig.innerPadding),
+        padding: const EdgeInsets.symmetric(horizontal: AppConfig.contentPadding, vertical: AppConfig.innerPadding),
         width: width,
         height: height,
         alignment: Alignment.center,

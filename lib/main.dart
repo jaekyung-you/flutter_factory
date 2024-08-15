@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_factory/presentation/common/base_bottom_sheet.dart';
 import 'package:flutter_factory/presentation/common/base_popup.dart';
 import 'package:flutter_factory/presentation/common/base_round_button.dart';
 import 'package:get/get.dart';
+
+import 'config/app_config.dart';
 
 void main() {
   runApp(const MyApp());
@@ -77,6 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
     ));
   }
 
+  void _showBottomSheet() {
+    Get.bottomSheet(
+      BaseBottomSheet(title: '바텀시트 타이틀', desc: '바텀시트 설명', buttonText: '확인', onPress: () { Get.back(); })
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -105,7 +114,13 @@ class _MyHomePageState extends State<MyHomePage> {
               onPress: () => _showPopup(),
               buttonFgColor: Colors.white,
               buttonBgColor: Colors.black,
-
+            ),
+            const SizedBox(height: AppConfig.innerPadding,),
+            BaseRoundButton(
+              buttonText: '바텀 시트 표기',
+              onPress: () => _showBottomSheet(),
+              buttonFgColor: Colors.white,
+              buttonBgColor: Colors.black,
             )
           ],
         ),

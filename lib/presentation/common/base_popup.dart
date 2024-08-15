@@ -52,13 +52,13 @@ class _BasePopupState extends State<BasePopup> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      insetPadding: const EdgeInsets.symmetric(horizontal: AppConfig.outerPadding * 2),
+      insetPadding: const EdgeInsets.symmetric(horizontal: AppConfig.innerPadding),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppConfig.borderRadiusSub)),
       backgroundColor: Colors.white,
       shadowColor: null,
       surfaceTintColor: null,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppConfig.innerPadding * 2, vertical: AppConfig.innerPadding * 2),
+        padding: const EdgeInsets.all(AppConfig.contentPadding),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -83,7 +83,7 @@ class _BasePopupState extends State<BasePopup> {
             /// 내용
             if (widget.desc != null)
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppConfig.innerPadding * 2),
+                padding: const EdgeInsets.symmetric(vertical: AppConfig.contentPadding),
                 child: Text(
                   widget.desc!,
                   style: TextStyle(fontSize: AppConfig.subTitleFontSize, fontWeight: FontWeight.w500),
@@ -92,7 +92,7 @@ class _BasePopupState extends State<BasePopup> {
 
             if (widget.content != null)
               Padding(
-                padding: const EdgeInsets.only(bottom: AppConfig.innerPadding * 2),
+                padding: const EdgeInsets.only(bottom: AppConfig.contentPadding),
                 child: widget.content!,
               ),
 
@@ -111,7 +111,7 @@ class _BasePopupState extends State<BasePopup> {
 
             if (widget.secondButtonText != null)
               Padding(
-                padding: const EdgeInsets.only(top: AppConfig.innerPadding * 2),
+                padding: const EdgeInsets.only(top: AppConfig.contentPadding),
                 child: BaseRoundButton(
                   buttonText: widget.secondButtonText!,
                   onPress: () {
@@ -127,7 +127,7 @@ class _BasePopupState extends State<BasePopup> {
 
             if (widget.thirdButtonText != null)
               Padding(
-                padding: const EdgeInsets.only(top: AppConfig.innerPadding * 2),
+                padding: const EdgeInsets.only(top: AppConfig.contentPadding),
                 child: BaseRoundButton(
                   buttonText: widget.thirdButtonText!,
                   onPress: () {
