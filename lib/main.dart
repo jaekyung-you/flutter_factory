@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_factory/presentation/common/base_bottom_sheet.dart';
-import 'package:flutter_factory/presentation/common/base_popup.dart';
-import 'package:flutter_factory/presentation/common/base_round_button.dart';
+import 'package:flutter_factory/home/home_screen.dart';
+import 'package:flutter_factory/presentation/map/map_screen.dart';
 import 'package:get/get.dart';
-
-import 'config/app_config.dart';
+import 'main_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,95 +34,52 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  late MainController mainController;
 
-  void _showPopup() {
-    // Get.dialog(BasePopup(
-    //     title: '팝업 타이틀',
-    //     desc: '팝업 내용',
-    //     content: Container(
-    //       color: Colors.red,
-    //       width: 100,
-    //       height: 100,
-    //     ),
-    //     firstButtonText: '확인'));
-
-    // Get.dialog(BasePopup.twoButton(
-    //   title: '팝업 타이틀',
-    //   desc: '팝업 내용',
-    //   content: Container(
-    //     color: Colors.red,
-    //     width: 100,
-    //     height: 100,
-    //   ),
-    //   firstButtonText: '확인',
-    //   onPressFirstButton: () {},
-    //   secondButtonText: '두번째 버튼',
-    //   onPressSecondButton: () {},
-    // ));
-
-    Get.dialog(BasePopup.threeButton(
-      title: '팝업 타이틀',
-      desc: '팝업 내용',
-      content: Container(
-        color: Colors.red,
-        width: 100,
-        height: 100,
-      ),
-      firstButtonText: '확인',
-      onPressFirstButton: () {},
-      secondButtonText: '두번째 버튼',
-      onPressSecondButton: () {},
-      thirdButtonText: '세번째 버튼',
-      onPressThirdButton: () {},
-    ));
-  }
-
-  void _showBottomSheet() {
-    Get.bottomSheet(
-      BaseBottomSheet(title: '바텀시트 타이틀', desc: '바텀시트 설명', buttonText: '확인', onPress: () { Get.back(); })
-    );
+  @override
+  void initState() {
+    super.initState();
+    mainController = Get.put(MainController());
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(''),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          children: [
-            BaseRoundButton(
-              buttonText: '팝업 표기',
-              onPress: () => _showPopup(),
-              buttonFgColor: Colors.white,
-              buttonBgColor: Colors.black,
-            ),
-            const SizedBox(height: AppConfig.innerPadding,),
-            BaseRoundButton(
-              buttonText: '바텀 시트 표기',
-              onPress: () => _showBottomSheet(),
-              buttonFgColor: Colors.white,
-              buttonBgColor: Colors.black,
-            )
-          ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: Obx(() => Container(
+            child: (() {
+              switch (mainController.currentTabIndex.value) {
+                case 0:
+                  return const HomeScreen();
+
+                case 1:
+                case 2:
+                  return const MapScreen();
+                case 3:
+                case 4:
+              }
+            })(),
+          )),
+      bottomNavigationBar: mainBottomNav(),
     );
+  }
+
+  Widget mainBottomNav() {
+    return Obx(() {
+      return BottomNavigationBar(
+        currentIndex: mainController.currentTabIndex.value,
+        onTap: mainController.setBottomTab,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: '메인', backgroundColor: Colors.purple),
+          BottomNavigationBarItem(icon: Icon(Icons.list), label: '기능1', backgroundColor: Colors.purple),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: '기능2'),
+          BottomNavigationBarItem(icon: Icon(Icons.question_answer), label: '기능3'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'MY'),
+        ],
+      );
+    });
   }
 }
