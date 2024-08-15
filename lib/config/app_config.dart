@@ -1,19 +1,5 @@
-class Theme {
-  // vivid red
-
-  // vivid blue
-
-  // vivid green
-
-  // vivid purple
-
-  // black & white
-
-  // pastel pink
-
-  // pastel blue
-
-  // pastel purple
-
-
+class AppConfig {
+  static const double borderRadiusMain = 8.0;
+  static const double borderRadiusSub = 16.0;
+  static const double innerPadding = 4.0;
 }
