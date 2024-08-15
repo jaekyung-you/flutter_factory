@@ -1,5 +1,7 @@
 class Theme {
 
+  // MainColor, SubColor, PointColor
+
   // vivid red
 
   // vivid blue
