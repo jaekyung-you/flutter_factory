@@ -66,20 +66,80 @@ class _BasePopupState extends State<BasePopup> {
             Row(
               children: [
                 const Spacer(),
-                IconButton(onPressed: (){
-                  Get.back();
-                }, icon: const Icon(Icons.close)),
+                IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.close)),
               ],
             ),
 
-
             /// 제목
-            Text(widget.title, style: TextStyle(fontSize: AppConfig.headerFontSize, fontWeight: FontWeight.bold),),
+            Text(
+              widget.title,
+              style: TextStyle(fontSize: AppConfig.headerFontSize, fontWeight: FontWeight.bold),
+            ),
 
             /// 내용
-            ///
+            if (widget.desc != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: AppConfig.innerPadding * 2),
+                child: Text(
+                  widget.desc!,
+                  style: TextStyle(fontSize: AppConfig.subTitleFontSize, fontWeight: FontWeight.w500),
+                ),
+              ),
+
+            if (widget.content != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: AppConfig.innerPadding * 2),
+                child: widget.content!,
+              ),
+
             /// 버튼
-            BaseRoundButton(buttonText: '확인', onPress: () { Get.back(); }, buttonFgColor: Colors.white, buttonBgColor: Colors.black, height: 50,)
+            BaseRoundButton(
+              buttonText: widget.firstButtonText,
+              onPress: () {
+                if (widget.onPressFirstButton != null) {
+                  widget.onPressFirstButton!();
+                }
+              },
+              buttonFgColor: Colors.white,
+              buttonBgColor: Colors.black,
+              height: 50,
+            ),
+
+            if (widget.secondButtonText != null)
+              Padding(
+                padding: const EdgeInsets.only(top: AppConfig.innerPadding * 2),
+                child: BaseRoundButton(
+                  buttonText: widget.secondButtonText!,
+                  onPress: () {
+                    if (widget.onPressSecondButton != null) {
+                      widget.onPressSecondButton!();
+                    }
+                  },
+                  buttonFgColor: Colors.white,
+                  buttonBgColor: Colors.black,
+                  height: 50,
+                ),
+              ),
+
+            if (widget.thirdButtonText != null)
+              Padding(
+                padding: const EdgeInsets.only(top: AppConfig.innerPadding * 2),
+                child: BaseRoundButton(
+                  buttonText: widget.thirdButtonText!,
+                  onPress: () {
+                    if (widget.onPressThirdButton != null) {
+                      widget.onPressThirdButton!();
+                    }
+                  },
+                  buttonFgColor: Colors.white,
+                  buttonBgColor: Colors.black,
+                  height: 50,
+                ),
+              ),
           ],
         ),
       ),

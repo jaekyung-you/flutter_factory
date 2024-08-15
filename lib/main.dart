@@ -36,17 +36,45 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _showPopup() {
-    // setState(() {
-    //   // This call to setState tells the Flutter framework that something has
-    //   // changed in this State, which causes it to rerun the build method below
-    //   // so that the display can reflect the updated values. If we changed
-    //   // _counter without calling setState(), then the build method would not be
-    //   // called again, and so nothing would appear to happen.
-    //   _counter++;
-    // });
-    Get.dialog(
-        BasePopup(title: '팝업 타이틀', firstButtonText: '확인')
-    );
+    // Get.dialog(BasePopup(
+    //     title: '팝업 타이틀',
+    //     desc: '팝업 내용',
+    //     content: Container(
+    //       color: Colors.red,
+    //       width: 100,
+    //       height: 100,
+    //     ),
+    //     firstButtonText: '확인'));
+
+    // Get.dialog(BasePopup.twoButton(
+    //   title: '팝업 타이틀',
+    //   desc: '팝업 내용',
+    //   content: Container(
+    //     color: Colors.red,
+    //     width: 100,
+    //     height: 100,
+    //   ),
+    //   firstButtonText: '확인',
+    //   onPressFirstButton: () {},
+    //   secondButtonText: '두번째 버튼',
+    //   onPressSecondButton: () {},
+    // ));
+
+    Get.dialog(BasePopup.threeButton(
+      title: '팝업 타이틀',
+      desc: '팝업 내용',
+      content: Container(
+        color: Colors.red,
+        width: 100,
+        height: 100,
+      ),
+      firstButtonText: '확인',
+      onPressFirstButton: () {},
+      secondButtonText: '두번째 버튼',
+      onPressSecondButton: () {},
+      thirdButtonText: '세번째 버튼',
+      onPressThirdButton: () {},
+    ));
   }
 
   @override
@@ -62,10 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(''),
@@ -75,8 +100,13 @@ class _MyHomePageState extends State<MyHomePage> {
         // in the middle of the parent.
         child: Column(
           children: [
-            BaseRoundButton(buttonText: '팝업 표기', onPress: () => _showPopup(), buttonFgColor: Colors.white, buttonBgColor: Colors.black, height: 56,)
+            BaseRoundButton(
+              buttonText: '팝업 표기',
+              onPress: () => _showPopup(),
+              buttonFgColor: Colors.white,
+              buttonBgColor: Colors.black,
 
+            )
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
