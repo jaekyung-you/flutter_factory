@@ -18,24 +18,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
-          return Column(
-            children: [
-              BaseRoundButton(
-                buttonText: '팝업 표기',
-                onPress: () => controller.showPopup(),
-                buttonFgColor: Colors.white,
-                buttonBgColor: Colors.black,
-              ),
-              const SizedBox(
-                height: AppConfig.innerPadding,
-              ),
-              BaseRoundButton(
-                buttonText: '바텀 시트 표기',
-                onPress: () => controller.showBottomSheet(),
-                buttonFgColor: Colors.white,
-                buttonBgColor: Colors.black,
-              )
-            ],
+          return SafeArea(
+            child: Column(
+              children: [
+                BaseRoundButton(
+                  buttonText: '팝업 표기',
+                  onPress: () => controller.showPopup(),
+                  buttonFgColor: Colors.white,
+                  buttonBgColor: Colors.black,
+                ),
+                const SizedBox(
+                  height: AppConfig.innerPadding,
+                ),
+                BaseRoundButton(
+                  buttonText: '바텀 시트 표기',
+                  onPress: () => controller.showBottomSheet(),
+                  buttonFgColor: Colors.white,
+                  buttonBgColor: Colors.black,
+                )
+              ],
+            ),
           );
         });
     ;
