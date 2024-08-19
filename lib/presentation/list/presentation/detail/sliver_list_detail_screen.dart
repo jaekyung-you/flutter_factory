@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_factory/presentation/common/base_round_button.dart';
 import 'package:flutter_factory/presentation/list/presentation/detail/sliver_list_detail_controller.dart';
+import 'package:flutter_factory/presentation/list/widgets/sliver_category_widget.dart';
 import 'package:flutter_factory/presentation/list/widgets/sliver_grid_widget.dart';
 import 'package:flutter_factory/presentation/list/widgets/sliver_list_widget.dart';
 import 'package:get/get.dart';
@@ -35,9 +36,21 @@ class _SliverListDetailScreenState extends State<SliverListDetailScreen> {
         body: const CustomScrollView(
           slivers: [
             SliverAppBarTitle(),
-            SliverTitleWidget(),
+            SliverTitleWidget(
+              title: 'Title1',
+            ),
             SliverListWidget(),
+            SliverTitleWidget(
+              title: 'Title2',
+            ),
+            SliverCategoryWidget(),
+            SliverTitleWidget(
+              title: 'Title3',
+            ),
             SliverGridWidget(),
+            SliverTitleWidget(
+              title: 'Title4',
+            ),
             SliverTapViewWidget(),
           ],
         ),

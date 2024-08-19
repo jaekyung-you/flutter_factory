@@ -16,7 +16,7 @@ class _SliverListWidgetState extends State<SliverListWidget> {
           leading: const Icon(Icons.person),
           title: Text('Item $index'),
         );
-      }, childCount: 10),
+      }, childCount: 3),
     );
   }
 }
