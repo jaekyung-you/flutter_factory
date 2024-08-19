@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_factory/home/home_screen.dart';
 import 'package:flutter_factory/presentation/list/presentation/list/list_screen.dart';
-import 'package:flutter_factory/presentation/list/presentation/list/sliver_list_screen.dart';
+import 'package:flutter_factory/presentation/list/presentation/detail/sliver_list_detail_screen.dart';
 import 'package:flutter_factory/presentation/map/map_screen.dart';
+import 'package:flutter_factory/routes/factory_routes.dart';
 import 'package:get/get.dart';
 import 'main_controller.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: "Pretendard",
       ),
+      getPages: FlutterRoutes.routes,
       home: const MyHomePage(),
     );
   }

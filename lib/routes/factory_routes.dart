@@ -1,3 +1,5 @@
+import 'package:flutter_factory/presentation/list/presentation/list/list_screen.dart';
+import 'package:flutter_factory/presentation/list/presentation/detail/sliver_list_detail_screen.dart';
 import 'package:get/get.dart';
 
 import '../main.dart';
@@ -14,5 +16,7 @@ class FlutterRoutes {
 
   static final routes = [
     GetPage(name: FlutterPath.HOME, page: () => const MyHomePage()),
+    GetPage(name: FlutterPath.LIST, page: () => const ListScreen()),
+    GetPage(name: FlutterPath.DETAIL, page: () => const SliverListDetailScreen()),
   ];
 }
