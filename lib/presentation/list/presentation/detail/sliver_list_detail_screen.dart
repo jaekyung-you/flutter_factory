@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../../../../config/app_config.dart';
 import '../../widgets/sliver_app_bar_title.dart';
+import '../../widgets/sliver_tap_view_widget.dart';
 import '../../widgets/sliver_title_widget.dart';
 
 class SliverListDetailScreen extends StatefulWidget {
@@ -37,6 +38,7 @@ class _SliverListDetailScreenState extends State<SliverListDetailScreen> {
             SliverTitleWidget(),
             SliverListWidget(),
             SliverGridWidget(),
+            SliverTapViewWidget(),
           ],
         ),
       ),
