@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_factory/home/home_screen.dart';
+import 'package:flutter_factory/presentation/list/presentation/list/list_screen.dart';
 import 'package:flutter_factory/presentation/list/presentation/list/sliver_list_screen.dart';
 import 'package:flutter_factory/presentation/map/map_screen.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const List<Widget> screens = [
     HomeScreen(),
-    SliverListScreen(),
+    // SliverListScreen(),
+    ListScreen(),
     MapScreen(),
     HomeScreen(), // todo: 앱 시동시 자동로그인이면 MyPageScreen으로 전환
     HomeScreen(),

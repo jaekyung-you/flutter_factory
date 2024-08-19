@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_factory/config/app_config.dart';
 
 class GridWidget extends StatefulWidget {
   const GridWidget({super.key});
@@ -14,17 +15,18 @@ class _GridWidgetState extends State<GridWidget> {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
       ),
-      itemCount: 10,
+      itemCount: 12,
       itemBuilder: (context, index) => Container(
-        // width: 100,
-        // height: 100,
-        color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppConfig.borderRadiusMain),
+          color: Colors.blue.withOpacity(0.5),
+        ),
       ),
     );
   }

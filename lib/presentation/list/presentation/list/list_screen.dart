@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_factory/presentation/list/widgets/grid_widget.dart';
-import 'package:flutter_factory/presentation/list/widgets/list_widget.dart';
+import 'package:flutter_factory/presentation/list/widgets/horizontal_list_widget.dart';
+import 'package:flutter_factory/presentation/list/widgets/vertical_list_widget.dart';
+
+import '../../../../config/app_config.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -12,13 +15,36 @@ class ListScreen extends StatefulWidget {
 class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            GridWidget(),
-            ListWidget(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppConfig.borderRadiusSub),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Title1',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+              GridWidget(),
+              SizedBox(
+                height: AppConfig.contentPadding,
+              ),
+              Text(
+                'Title2',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+              VerticalListWidget(),
+              SizedBox(
+                height: AppConfig.contentPadding,
+              ),
+              Text(
+                'Title3',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+              HorizontalListWidget(),
+            ],
+          ),
         ),
       ),
     );
