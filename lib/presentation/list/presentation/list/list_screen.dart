@@ -18,7 +18,7 @@ class _ListScreenState extends State<ListScreen> {
     return const SafeArea(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppConfig.borderRadiusSub),
+          padding: EdgeInsets.symmetric(horizontal: AppConfig.borderRadiusSub),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

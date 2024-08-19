@@ -7,8 +7,10 @@ class BaseRoundButton extends StatelessWidget {
   Function onPress;
   Color buttonFgColor;
   Color buttonBgColor;
+  Color borderColor;
   double width;
   double height;
+  double borderWidth;
   Icon? prefixIcon;
   Icon? suffixIcon;
 
@@ -17,8 +19,10 @@ class BaseRoundButton extends StatelessWidget {
     required this.onPress,
     required this.buttonFgColor,
     required this.buttonBgColor,
+    this.borderColor = Colors.transparent,
     this.width = double.maxFinite,
     this.height = 56,
+    this.borderWidth = 1,
     this.prefixIcon,
     this.suffixIcon,
   });
@@ -37,6 +41,7 @@ class BaseRoundButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppConfig.borderRadiusSub),
           color: buttonBgColor,
+          border: Border.all(color: borderColor, width: borderWidth),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
