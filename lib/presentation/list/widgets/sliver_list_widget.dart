@@ -11,9 +11,12 @@ class _SliverListWidgetState extends State<SliverListWidget> {
   @override
   Widget build(BuildContext context) {
     return SliverList(
-        delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-          return ListTile(leading: Icon(Icons.person),
-            title: Text('Item $index'),);
-        }, childCount: 20));
+      delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+        return ListTile(
+          leading: const Icon(Icons.person),
+          title: Text('Item $index'),
+        );
+      }, childCount: 10),
+    );
   }
 }

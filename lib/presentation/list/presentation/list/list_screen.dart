@@ -4,6 +4,7 @@ import 'package:flutter_factory/presentation/list/widgets/horizontal_list_widget
 import 'package:flutter_factory/presentation/list/widgets/vertical_list_widget.dart';
 
 import '../../../../config/app_config.dart';
+import '../../widgets/image_page_view.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -26,7 +27,7 @@ class _ListScreenState extends State<ListScreen> {
                 'Title1',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
-              GridWidget(),
+              ImagePageView(),
               SizedBox(
                 height: AppConfig.contentPadding,
               ),
@@ -43,6 +44,14 @@ class _ListScreenState extends State<ListScreen> {
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               HorizontalListWidget(),
+              SizedBox(
+                height: AppConfig.contentPadding,
+              ),
+              Text(
+                'Title4',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+              GridWidget(),
             ],
           ),
         ),
