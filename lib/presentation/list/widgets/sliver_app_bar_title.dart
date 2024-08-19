@@ -7,7 +7,7 @@ class SliverAppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       expandedHeight: 200,
-      collapsedHeight: 40,
+      collapsedHeight: 60,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         title: Text('sliver list app bar'),
