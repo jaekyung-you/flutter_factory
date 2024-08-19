@@ -18,7 +18,6 @@ class MapController extends GetxController {
   }
 
   Future<void> initializeNaverMap() async {
-    // WidgetsFlutterBinding.ensureInitialized();
     initializedMap.value = false;
     await NaverMapSdk.instance
         .initialize(clientId: Env.naverMapClientKey, onAuthFailed: (e) => print("네이버 맵 인증 오류: $e, name: onAuthFailed"));

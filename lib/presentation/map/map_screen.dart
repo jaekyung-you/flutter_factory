@@ -7,6 +7,7 @@ import 'package:flutter_factory/presentation/map/map_controller.dart';
 import 'package:flutter_factory/presentation/map/widgets/city_filter.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
@@ -17,6 +18,8 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   late MapController controller;
+  late GoogleMapController googleMapController;
+  final LatLng _center = const LatLng(45.521563, -122.677433);
   final _sheet = GlobalKey();
   final Completer<NaverMapController> mapControllerCompleter = Completer();
 
@@ -33,15 +36,15 @@ class _MapScreenState extends State<MapScreen> {
         body: Stack(
           children: [
             // Map
-            // Container(color: Colors.green),
-            Obx(() {
-              return controller.initializedMap.value
-                  ? naverMapScreen()
-                  : Container(
-                      color: Colors.green,
-                    );
-            }),
+            // Obx(() {
+            //   return controller.initializedMap.value
+            //       ? naverMapWidget()
+            //       : Container(
+            //           color: Colors.green,
+            //         );
+            // }),
 
+            googleMapWidget(),
             // Filter & FloatingButton, BottomSheet
             Column(
               children: [
@@ -92,7 +95,7 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  Widget naverMapScreen() {
+  Widget naverMapWidget() {
     return NaverMap(
       options: const NaverMapViewOptions(
         indoorEnable: true, // 실내 맵 사용 가능 여부
@@ -101,6 +104,15 @@ class _MapScreenState extends State<MapScreen> {
       ),
       onMapReady: (controller) async {
         mapControllerCompleter.complete(controller);
+      },
+    );
+  }
+
+  Widget googleMapWidget() {
+    return GoogleMap(
+      initialCameraPosition: CameraPosition(target: _center, zoom: 11.0),
+      onMapCreated: (controller) {
+        googleMapController = controller;
       },
     );
   }
