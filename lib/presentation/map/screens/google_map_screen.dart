@@ -3,21 +3,21 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_factory/config/app_config.dart';
 import 'package:flutter_factory/presentation/common/base_row_filter.dart';
-import 'package:flutter_factory/presentation/map/map_controller.dart';
+import 'package:flutter_factory/presentation/map/controller/google_map_client_controller.dart';
 import 'package:flutter_factory/presentation/map/widgets/city_filter.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+class GoogleMapScreen extends StatefulWidget {
+  const GoogleMapScreen({super.key});
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  State<GoogleMapScreen> createState() => _GoogleMapScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
-  late MapController controller;
+class _GoogleMapScreenState extends State<GoogleMapScreen> {
+  late GoogleMapClientController controller;
   late GoogleMapController googleMapController;
   final LatLng _center = const LatLng(45.521563, -122.677433);
   final _sheet = GlobalKey();
@@ -26,7 +26,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    controller = Get.isRegistered<MapController>() ? Get.find<MapController>() : Get.put(MapController());
+    controller = Get.isRegistered<GoogleMapClientController>() ? Get.find<GoogleMapClientController>() : Get.put(GoogleMapClientController());
   }
 
   @override
@@ -92,19 +92,6 @@ class _MapScreenState extends State<MapScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget naverMapWidget() {
-    return NaverMap(
-      options: const NaverMapViewOptions(
-        indoorEnable: true, // 실내 맵 사용 가능 여부
-        locationButtonEnable: false, // 위치 버튼 표시 여부 설정
-        consumeSymbolTapEvents: false, // 심볼 탭 이벤트 소비 여부 설정
-      ),
-      onMapReady: (controller) async {
-        mapControllerCompleter.complete(controller);
-      },
     );
   }
 

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_factory/home/home_screen.dart';
 import 'package:flutter_factory/presentation/chat/chat_screen.dart';
 import 'package:flutter_factory/presentation/list/presentation/list/list_screen.dart';
-import 'package:flutter_factory/presentation/list/presentation/detail/sliver_list_detail_screen.dart';
-import 'package:flutter_factory/presentation/map/map_screen.dart';
+import 'package:flutter_factory/presentation/map/screens/naver_map_screen.dart';
 import 'package:flutter_factory/routes/factory_routes.dart';
 import 'package:get/get.dart';
 import 'main_controller.dart';
@@ -50,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const List<Widget> screens = [
     HomeScreen(),
     ListScreen(),
-    MapScreen(),
+    NaverMapScreen(),
     ChatScreen(), // todo: 앱 시동시 자동로그인이면 MyPageScreen으로 전환
     HomeScreen(),
   ];
